@@ -23,7 +23,7 @@ Page({
       image: '/images/bg.jpg',
       width: qrcodeWidth,
       height: qrcodeWidth,
-      colorDark: "#DA4967",
+      colorDark: "black",
       colorLight: "white",
       correctLevel: QRCode.CorrectLevel.H,
     });
