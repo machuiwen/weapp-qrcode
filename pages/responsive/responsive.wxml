@@ -10,8 +10,3 @@
 
 <!-- image显示 -->
 <view class='tip'>长按保存或转发</view>
-
-<view class='line'></view>
-
-<image src='{{imgsrc}}' style="display: block;margin:20rpx auto;width:{{qrcodeWidth}}px; height:{{qrcodeWidth}}px;"></image>
-<view class='tip'>以图片的形式显示</view>
