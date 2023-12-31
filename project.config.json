@@ -17,12 +17,7 @@
     "appid": "wxf5e105a4ce9cf07b",
     "projectname": "weapp-qrcode",
     "packOptions": {
-        "ignore": [
-            {
-                "value": "doc-images",
-                "type": "folder"
-            }
-        ],
+        "ignore": [],
         "include": []
     },
     "simulatorType": "wechat",
