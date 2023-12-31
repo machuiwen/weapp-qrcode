@@ -1,9 +1,6 @@
 {
     "pages": [
-        "pages/responsive/responsive",
-        "pages/index/index",
-        "pages/test/test",
-        "pages/useInComponent/useInComponent"
+        "pages/responsive/responsive"
     ],
     "window": {
         "backgroundTextStyle": "light",

@@ -8,7 +8,7 @@ const qrcodeWidth = rpx2px(300)
 
 Page({
   data: {
-    text: 'https://github.com/tomfriwel/weapp-qrcode',
+    text: '',
     image: '',
     // 用于设置wxml里canvas的width和height样式
     qrcodeWidth: qrcodeWidth,
@@ -44,9 +44,9 @@ Page({
     let {
       value
     } = e.detail
-    this.renderCode(value)
+    this.renderQRCode(value)
   },
-  renderCode(value) {
+  renderQRCode(value) {
     const z = this
     console.log('make handler')
     qrcode.makeCode(value, () => {
@@ -65,14 +65,17 @@ Page({
       text: value
     })
   },
-  tapHandler: function() {
-    this.renderCode(this.data.text)
+  convertTapHandler: function() {
+    this.renderQRCode(this.data.text)
+  },
+  clearTapHandler: function() {
+    this.setData({text: ''})
   },
   // 长按保存
   save: function() {
     console.log('save')
     wx.showActionSheet({
-      itemList: ['保存图片'],
+      itemList: ['保存图片', '转发'],
       success: function(res) {
         console.log(res.tapIndex)
         if (res.tapIndex == 0) {
@@ -81,7 +84,27 @@ Page({
               filePath: path,
             })
           })
+        } else if (res.tapIndex == 1) {
+          qrcode.exportImage(function(path) {
+            wx.showShareImageMenu({
+              path: path,
+              // needShowEntrance: 'true',
+              success() {
+                wx.showToast({
+                  title: '分享成功',
+                  icon: 'success',
+                  duration: 2000,
+                });
+              },
+              fail(e) {
+                console.log(e, '分享失败');
+              },
+            })
+          })
         }
+      },
+      fail: function(res) {
+        console.log(res.errMsg)
       }
     })
   }
